@@ -11,3 +11,6 @@ output:
 
 ![](data/logic.jpg)
 
+# Personal Experience
+
+![](data/cv4lsn.pdf)
