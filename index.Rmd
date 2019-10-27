@@ -7,7 +7,7 @@ output:
     theme: cerulean
 ---
 
-# I am watching you
+# He is watching you
 
 ![](data/logic.jpg)
 
