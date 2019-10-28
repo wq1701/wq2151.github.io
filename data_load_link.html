@@ -14,7 +14,7 @@
 
 <meta name="date" content="2019-10-27" />
 
-<title>Untitled</title>
+<title>load NYC Restaurant Inspections data and plot it!</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -282,6 +282,9 @@ $(document).ready(function () {
   <a href="about.html">About</a>
 </li>
 <li>
+  <a href="data_load_link.html">plotly</a>
+</li>
+<li>
   <a href="mailto:&lt;wwqi4real@gmail.com&gt;">
     <span class="fa fa-envelope fa-lg"></span>
      
@@ -302,14 +305,26 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Untitled</h1>
+<h1 class="title toc-ignore">load NYC Restaurant Inspections data and plot it!</h1>
 <h4 class="author">wq2151</h4>
 <h4 class="date">10/27/2019</h4>
 
 </div>
 
 
-<pre class="r"><code>data(rest_inspec)</code></pre>
+<pre class="r"><code>data(rest_inspec)
+
+no_of_cuisine = rest_inspec %&gt;% 
+  group_by(cuisine_description) %&gt;% 
+  count()
+
+ggplot(no_of_cuisine) + 
+  geom_col(aes(x = reorder(cuisine_description, -n), y = n)) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 8), 
+        axis.text.y = element_text(size = 10)) + 
+  labs(x = &quot;Cuisine&quot;, y = &quot;Number of restaurants&quot;, title = &quot;Number of orders and correspoding aisles in descending order&quot;) +
+  scale_y_continuous(breaks = seq(0, 90000, by = 5000))</code></pre>
+<p><img src="data_load_link_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 
 
 

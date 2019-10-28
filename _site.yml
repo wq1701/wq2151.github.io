@@ -5,6 +5,8 @@ navbar:
   right:
     - text: "About"
       href: about.html
+    - text: "plotly"
+      href: data_load_link.html
     - icon: fa-envelope fa-lg
       href: mailto:<wwqi4real@gmail.com>
     - icon: fa-github fa-lg

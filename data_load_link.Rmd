@@ -1,18 +1,34 @@
 ---
-title: "Untitled"
+title: "load NYC Restaurant Inspections data and plot it!"
 author: "wq2151"
 date: "10/27/2019"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE
+)
 library(p8105.datasets)
 library(tidyverse)
 library(plotly)
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 data(rest_inspec)
+
+no_of_cuisine = rest_inspec %>% 
+  group_by(cuisine_description) %>% 
+  count()
+
+ggplot(no_of_cuisine) + 
+  geom_col(aes(x = reorder(cuisine_description, -n), y = n)) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 8), 
+        axis.text.y = element_text(size = 10)) + 
+  labs(x = "Cuisine", y = "Number of restaurants", title = "Number of orders and correspoding aisles in descending order") +
+  scale_y_continuous(breaks = seq(0, 90000, by = 5000))
+  
 ```
 
