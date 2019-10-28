@@ -13,4 +13,7 @@ output:
 
 # Personal Experience
 
-![](data/cv4lsn.pdf)
+# Navigation
+
+
+
