@@ -1,5 +1,5 @@
 ---
-title: "load NYC Restaurant Inspections data and plot it!"
+title: "load instacart data and plot it!"
 author: "wq2151"
 date: "10/27/2019"
 output: html_document
@@ -12,33 +12,18 @@ library(tidyverse)
 library(plotly)
 ```
 
-```{r}
-data(rest_inspec)
+```{r is this the problem, warning=FALSE}
+data("instacart")
 
-no_of_cuisine = rest_inspec %>% 
-  count(cuisine_description, sort = T) %>% 
-  mutate(cuisine_description = fct_reorder(cuisine_description, -n)) %>% 
-  plot_ly(x = ~cuisine_description, y = ~n, type = "bar", alpha = 0.5)
+most_aisle_orders = instacart %>%
+  count(aisle, sort = T)
+  
+most_aisle_orders %>% 
+  filter(n > 10000) %>% 
+  mutate(aisle = fct_reorder(aisle, -n)) %>% 
+  plot_ly(x = ~aisle, y = ~n, type = "bar", color = ~aisle)
 ```
 
-```{r reproduce nyc_airbnb}
-data(nyc_airbnb)
-nyc_airbnb = 
-  nyc_airbnb %>% 
-  mutate(rating = review_scores_location / 2) %>%
-  select(
-    neighbourhood_group, neighbourhood, rating, price, room_type, lat, long) %>%
-  filter(
-    !is.na(rating), 
-    neighbourhood_group == "Manhattan",
-    room_type == "Entire home/apt",
-    price %in% 100:500)  %>% 
-  sample_n(5000)
 
-nyc_airbnb %>%
-  mutate(text_label = str_c("Price: $", price, '\nRating: ', rating)) %>% 
-  plot_ly(
-    x = ~lat, y = ~long, type = "scatter", mode = "markers",
-    color = ~price, text = ~text_label, alpha = 0.5)
-```
+
 
