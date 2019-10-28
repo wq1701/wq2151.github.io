@@ -6,29 +6,39 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(
-	echo = TRUE,
-	message = FALSE,
-	warning = FALSE
-)
+knitr::opts_chunk$set(echo = TRUE)
 library(p8105.datasets)
 library(tidyverse)
 library(plotly)
 ```
 
-```{r message=FALSE, warning=FALSE}
+```{r}
 data(rest_inspec)
 
 no_of_cuisine = rest_inspec %>% 
-  group_by(cuisine_description) %>% 
-  count()
+  count(cuisine_description, sort = T) %>% 
+  mutate(cuisine_description = fct_reorder(cuisine_description, -n)) %>% 
+  plot_ly(x = ~cuisine_description, y = ~n, type = "bar", alpha = 0.5)
+```
 
-ggplot(no_of_cuisine) + 
-  geom_col(aes(x = reorder(cuisine_description, -n), y = n)) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 8), 
-        axis.text.y = element_text(size = 10)) + 
-  labs(x = "Cuisine", y = "Number of restaurants", title = "Number of orders and correspoding aisles in descending order") +
-  scale_y_continuous(breaks = seq(0, 90000, by = 5000))
-  
+```{r reproduce nyc_airbnb}
+data(nyc_airbnb)
+nyc_airbnb = 
+  nyc_airbnb %>% 
+  mutate(rating = review_scores_location / 2) %>%
+  select(
+    neighbourhood_group, neighbourhood, rating, price, room_type, lat, long) %>%
+  filter(
+    !is.na(rating), 
+    neighbourhood_group == "Manhattan",
+    room_type == "Entire home/apt",
+    price %in% 100:500)  %>% 
+  sample_n(5000)
+
+nyc_airbnb %>%
+  mutate(text_label = str_c("Price: $", price, '\nRating: ', rating)) %>% 
+  plot_ly(
+    x = ~lat, y = ~long, type = "scatter", mode = "markers",
+    color = ~price, text = ~text_label, alpha = 0.5)
 ```
 
