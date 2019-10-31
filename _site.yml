@@ -6,7 +6,7 @@ navbar:
     - text: "About"
       href: about.html
     - text: "plotly"
-      href: data_load_link.html
+      href: plotly.html
     - text: "Dashboard"
       href: dashboard.html
     - icon: fa-envelope fa-lg
