@@ -56,5 +56,3 @@ instacart %>%
   distinct() %>% 
   plot_ly(x = ~product_name, y = ~mean_ord_hr, type = "scatter" ,mode = "markers")
 ```
-
-
