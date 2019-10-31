@@ -22,7 +22,7 @@ most_aisle_orders = instacart %>%
 most_aisle_orders %>% 
   filter(n > 10000) %>% 
   mutate(aisle = fct_reorder(aisle, -n)) %>% 
-  plot_ly(x = ~aisle, y = ~n, type = "bar", color = ~aisle)
+  plot_ly(x = ~aisle, y = ~n, type = "bar", colors = "Set2")
 ```
 
 ```{r}
@@ -31,19 +31,20 @@ common_product = instacart %>%
   sample_n(20)
 
 inner_join(instacart, common_product, by = "product_name") %>% 
-  mutate(product_name = fct_reorder(product_name, days_since_prior_order)) %>%   plot_ly(x = ~product_name, y = ~days_since_prior_order, type = "box")
+  mutate(product_name = fct_reorder(product_name, days_since_prior_order)) %>%   plot_ly(x = ~product_name, y = ~days_since_prior_order, type = "box", colors = "Set2")
 ```
 
 ```{r}
-instacart %>% 
+plot3 = instacart %>% 
   filter(aisle == "packaged vegetables fruits") %>% 
   group_by(product_name) %>% 
   mutate(mean_ord_hr = mean(order_hour_of_day)) %>% 
   select(product_name, mean_ord_hr) %>% 
   distinct() %>% 
   ungroup() %>% 
-  sample_n(200) %>% 
-  plot_ly(x = ~product_name, y = ~mean_ord_hr, type = "scatter" ,mode = "markers")
+  sample_n(200)
+
+plot_ly(data = plot3, x = ~product_name, y = ~mean_ord_hr, type = "scatter" ,mode = "markers", colors = "Set2")
 ```
 
 
