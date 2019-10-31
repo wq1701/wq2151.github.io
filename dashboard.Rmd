@@ -54,5 +54,7 @@ instacart %>%
   mutate(mean_ord_hr = mean(order_hour_of_day)) %>% 
   select(product_name, mean_ord_hr) %>% 
   distinct() %>% 
+  ungroup() %>% 
+  sample_n(50) %>% 
   plot_ly(x = ~product_name, y = ~mean_ord_hr, type = "scatter" ,mode = "markers")
 ```
