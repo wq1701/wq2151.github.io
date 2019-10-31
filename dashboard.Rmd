@@ -20,6 +20,7 @@ Column {data-width=650}
 
 ```{r}
 data("instacart")
+set.seed(123)
 
 most_aisle_orders = instacart %>%
   count(aisle, sort = T)
