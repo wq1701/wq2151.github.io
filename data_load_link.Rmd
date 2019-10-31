@@ -13,9 +13,8 @@ library(plotly)
 ```
 
 ```{r warning=FALSE}
-set.seed(123)
-
 data("instacart")
+set.seed(123)
 
 most_aisle_orders = instacart %>%
   count(aisle, sort = T)
@@ -29,7 +28,7 @@ most_aisle_orders %>%
 ```{r}
 common_product = instacart %>% 
   count(product_name, sort = T) %>% 
-  sample_n(30)
+  sample_n(20)
 
 inner_join(instacart, common_product, by = "product_name") %>% 
   mutate(product_name = fct_reorder(product_name, days_since_prior_order)) %>%   plot_ly(x = ~product_name, y = ~days_since_prior_order, type = "box")
@@ -42,6 +41,8 @@ instacart %>%
   mutate(mean_ord_hr = mean(order_hour_of_day)) %>% 
   select(product_name, mean_ord_hr) %>% 
   distinct() %>% 
+  ungroup() %>% 
+  sample_n(200) %>% 
   plot_ly(x = ~product_name, y = ~mean_ord_hr, type = "scatter" ,mode = "markers")
 ```
 

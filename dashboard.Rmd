@@ -55,6 +55,8 @@ instacart %>%
   select(product_name, mean_ord_hr) %>% 
   distinct() %>% 
   ungroup() %>% 
-  sample_n(50) %>% 
+  sample_n(200) %>% 
   plot_ly(x = ~product_name, y = ~mean_ord_hr, type = "scatter" ,mode = "markers")
+
+# rmarkdown::render("dashboard.Rmd", output_format = "flexdashboard::flex_dashboard")
 ```
