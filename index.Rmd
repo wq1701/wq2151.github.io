@@ -10,7 +10,8 @@ output:
 
 ![](picture/logic.jpg)
 
-Plots and Resume and GitHub repo can be accessed on the upper right side of the page. 
+# Navigation: 
+- Plots, resume and GitHub repo can be accessed on the upper right side of the page. 
 
 
 
