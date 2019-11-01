@@ -6,9 +6,14 @@ output:
     toc_float: true
 ---
 
-# He is watching you
+# Mr.Spark
 
 ![](picture/logic.jpg)
+
+Plots/Dashboard and GitHub repo can be accessed on the upper right side of the page. 
+
+
+
 
 
 

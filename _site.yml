@@ -5,8 +5,6 @@ navbar:
   right:
     - text: "About"
       href: about.html
-    - text: "Resume"
-      href: resume.html
     - text: "Plots"
       menu:
       - text: "Plotly"
@@ -17,6 +15,10 @@ navbar:
       href: mailto:<wwqi4real@gmail.com>
     - icon: fa-github fa-lg
       href: http://github.com/wwqi4realGitHub/
+  left:
+    - text: "Resume"
+      href: resume.html
+
 output:
   html_document:
     theme: spacelab
