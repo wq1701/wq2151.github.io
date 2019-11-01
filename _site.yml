@@ -5,6 +5,8 @@ navbar:
   right:
     - text: "About"
       href: about.html
+    - text: "Resume"
+      href: resume.html
     - text: "Plots"
       menu:
       - text: "Plotly"
@@ -17,4 +19,4 @@ navbar:
       href: http://github.com/wwqi4realGitHub/
 output:
   html_document:
-    theme: cerulean
+    theme: spacelab
