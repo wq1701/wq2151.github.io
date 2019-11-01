@@ -51,7 +51,7 @@ instacart %>%
 ```{r}
 random_product = instacart %>% 
   count(product_name, sort = T) %>% 
-  sample_n(20)
+  sample_n(50)
 
 inner_join(instacart, random_product, by = "product_name") %>% 
   mutate(product_name = fct_reorder(product_name, days_since_prior_order)) %>%   plot_ly(x = ~product_name, y = ~days_since_prior_order, type = "box")
