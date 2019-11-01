@@ -4,17 +4,12 @@ output:
   html_document:
     toc: true
     toc_float: true
-    theme: spacelab
 ---
 
 # He is watching you
 
 ![](picture/logic.jpg)
 
-# Personal Experience
-My name is Weiwei Qi and this website is now used for data science p8105 homework 4
-
-# Navigation
 
 
 
