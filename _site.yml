@@ -5,10 +5,12 @@ navbar:
   right:
     - text: "About"
       href: about.html
-    - text: "plotly"
-      href: plotly.html
-    - text: "Dashboard"
-      href: dashboard.html
+    - text: "Plots"
+      menu:
+      - text: "Plotly"
+        href: plotly.html
+      - text: "Dashboard"
+        href: dashboard.html
     - icon: fa-envelope fa-lg
       href: mailto:<wwqi4real@gmail.com>
     - icon: fa-github fa-lg

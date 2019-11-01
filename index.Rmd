@@ -1,5 +1,5 @@
 ---
-title: "Welcome to new internet"
+title: "Welcome to My personal website"
 output: 
   html_document:
     toc: true
@@ -9,7 +9,7 @@ output:
 
 # He is watching you
 
-![](data/logic.jpg)
+![](picture/logic.jpg)
 
 # Personal Experience
 
