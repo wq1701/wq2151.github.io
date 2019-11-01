@@ -12,6 +12,7 @@ output:
 
 # Navigation: 
 - Plots, resume and GitHub repo can be accessed on the upper right side of the page. 
+- Click about to know more...
 
 
 
